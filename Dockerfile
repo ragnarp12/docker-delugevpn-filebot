@@ -22,6 +22,9 @@ ADD run/nobody/*.py /home/nobody/
 # add pre-configured config files for deluge
 ADD config/nobody/ /home/nobody/
 
+# add other script
+ADD scripts /scripts
+
 # install app
 #############
 
@@ -31,6 +34,9 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh /home/nobody/*.py && \
 
 # install filebot
 RUN /bin/bash /root/filebot-install.sh
+
+# Make scripts in /scripts folder executable
+RUN chmod +x /scripts/*.sh
 
 # docker settings
 #################
