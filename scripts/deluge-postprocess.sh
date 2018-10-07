@@ -20,6 +20,10 @@ if [ ! -d "$TORRENT_NEW_PATH" ]; then
     exit 0
 fi
 
+SUBLANG=en
+SKIP_EXTRACT=n
+MUSIC=y
+ARTWORK=false
    
 filebot -script fn:amc \
     --output "$MEDIA_OUTPUT_PATH" \
@@ -31,5 +35,6 @@ filebot -script fn:amc \
     --conflict override \
     --def artwork=$ARTWORK \
     ut_kind=multi "ut_dir=$TORRENT_NEW_PATH" "ut_title=$TORRENT_NAME" \
+    subtitles=$SUBLANG \
     movieFormat="movies/{n} ({y})/{n} ({y}){' CD'+pi}{'.'+lang}" \
     extractFolder="$HOME/files/_extracted" music=$MUSIC skipExtract=$SKIP_EXTRACT &
