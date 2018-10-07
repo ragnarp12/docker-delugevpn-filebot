@@ -8,6 +8,9 @@
 
 This is a clone from binhex/arch-delugevpn
 
+Added Deluge postprogress script so user must use
+env MOVIES_PATH <-- path to the unsorted and unrenamed movies
+env MEDIA_OUTPUT_PATH <-- path to parent of sorted folder where symlinked files are kept
 
 **Description**
 
