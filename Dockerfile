@@ -35,8 +35,15 @@ RUN chmod +x /root/*.sh /home/nobody/*.sh /home/nobody/*.py && \
 # install filebot
 RUN /bin/bash /root/filebot-install.sh
 
+# install python for setuser
+RUN /bin/bash /root/setuser-install.sh
+
 # Make scripts in /scripts folder executable
 RUN chmod +x /scripts/*.sh
+
+ADD program/files/* /files/
+ADD program/sbin/* /sbin/
+RUN chmod +x /sbin/setuser && \
 
 # docker settings
 #################

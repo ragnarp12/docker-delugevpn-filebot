@@ -24,15 +24,16 @@ SUBLANG=en
 SKIP_EXTRACT=n
 MUSIC=y
 ARTWORK=false
-   
-filebot -script fn:amc \
+
+/files/runas.sh $PUID $PGID 0002 /files/filebot.sh \
+    -script fn:amc \
     --output "$MEDIA_OUTPUT_PATH" \
     -non-strict \
     --encoding utf8 \
     --log all \
     --log-file amc-transmission.log \
     --action symlink \
-    --conflict override \
+    --conflict auto \
     --def artwork=$ARTWORK \
     ut_kind=multi "ut_dir=$TORRENT_NEW_PATH" "ut_title=$TORRENT_NAME" \
     subtitles=$SUBLANG \
