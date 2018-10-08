@@ -43,7 +43,7 @@ RUN chmod +x /scripts/*.sh
 
 ADD program/files/* /files/
 ADD program/sbin/* /sbin/
-RUN chmod +x /sbin/setuser && \
+RUN chmod +x /sbin/setuser
 
 # docker settings
 #################
