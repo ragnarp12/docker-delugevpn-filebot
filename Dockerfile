@@ -40,11 +40,12 @@ RUN /bin/bash /root/setuser-install.sh
 
 # Make scripts in /scripts folder executable
 RUN chmod +x /scripts/*.sh
-RUN chmod +x /files/*.sh
+
 
 ADD program/files/* /files/
 ADD program/sbin/* /sbin/
 RUN chmod +x /sbin/setuser
+RUN chmod +x /files/*.sh
 
 # docker settings
 #################
