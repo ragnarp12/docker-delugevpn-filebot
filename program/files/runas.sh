@@ -90,6 +90,7 @@ function create_user {
 
 #process_args "$@"
 UMASK=$3
+USER=$1
 # Shift off the args so that we can exec $@ below
 shift; shift; shift
 
