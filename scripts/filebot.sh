@@ -7,11 +7,12 @@
 TORRENT_NAME="$1"
 TORRENT_LABEL="N/A"
 TORRENT_NEW_PATH="$MOVIES_PATH/$TORRENT_NAME"
+echo $TORRENT_NEW_PATH
 
 # MOVIES_PATH=Path where you keep real movies
 # MEDIA_OUTPUT_PATH=Path where "movies" folder is where you have symlinks
 # If MEDIA_PATH or MEDIA_OUTPUT_PATH is empty then exit
-if [ -z $MOVIES_PATH ] || [ -z $MEDIA_OUTPUT_PATH ]; then
+if [ -z $TORRENT_NAME ] || [ -z $MOVIES_PATH ] || [ -z $MEDIA_OUTPUT_PATH ]; then
     exit 0
 fi
 

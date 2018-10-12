@@ -1,3 +1,3 @@
 #!/bin/bash
-
-/files/runas.sh nobody 0002 /scripts/filebot.sh $2
+USERNAME=$(getent passwd "$PUID"  | cut -d: -f1)
+/files/runas.sh $USERNAME $UMASK /scripts/filebot.sh $2
