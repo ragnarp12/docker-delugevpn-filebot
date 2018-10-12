@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_CTYPE="en_US.UTF-8"
+#export LANG=en_US.UTF-8
+#export LANGUAGE=en_US.UTF-8
+#export LC_CTYPE="en_US.UTF-8"
 
 TORRENT_NAME="$1"
 TORRENT_LABEL="N/A"
