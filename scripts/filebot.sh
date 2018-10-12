@@ -3,7 +3,7 @@
 #export LANG=en_US.UTF-8
 #export LANGUAGE=en_US.UTF-8
 #export LC_CTYPE="en_US.UTF-8"
-
+sleep 20
 TORRENT_NAME="$1"
 TORRENT_LABEL="N/A"
 TORRENT_NEW_PATH="$MOVIES_PATH/$TORRENT_NAME"
@@ -19,6 +19,8 @@ if [ ! -d "$TORRENT_NEW_PATH" ]; then
     exit 0
 fi
 
+chown $PUID:$PGID -R $TORRENT_NEW_PATH
+
 SUBLANG=en
 SKIP_EXTRACT=n
 MUSIC=y
@@ -32,6 +34,7 @@ filebot -script fn:amc \
     --log-file amc-transmission.log \
     --action symlink \
     --conflict auto \
+    --def exec="/scripts/setowner.sh \"{f}\"" \
     --def artwork=$ARTWORK \
     ut_kind=multi "ut_dir=$TORRENT_NEW_PATH" "ut_title=$TORRENT_NAME" \
     subtitles=$SUBLANG \
