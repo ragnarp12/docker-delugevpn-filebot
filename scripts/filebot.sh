@@ -20,6 +20,7 @@ if [ ! -d "$TORRENT_NEW_PATH" ]; then
 fi
 
 chown $PUID:$PGID -R $TORRENT_NEW_PATH
+THEFILE=""
 
 SUBLANG=en
 SKIP_EXTRACT=n
@@ -34,9 +35,13 @@ filebot -script fn:amc \
     --log-file amc-transmission.log \
     --action symlink \
     --conflict auto \
-    --def exec="/scripts/setowner.sh \"{f}\"" \
+    --def exec="THEFILE=\"{f}\"" \
     --def artwork=$ARTWORK \
     ut_kind=multi "ut_dir=$TORRENT_NEW_PATH" "ut_title=$TORRENT_NAME" \
     subtitles=$SUBLANG \
     movieFormat="movies/{n} ({y})/{n} ({y}){' CD'+pi}{'.'+lang}" \
     extractFolder="$HOME/files/_extracted" music=$MUSIC skipExtract=$SKIP_EXTRACT &
+
+if [ ! -z $THEFILE ]; then 
+/scripts/setowner.sh "$THEFILE"
+fi
