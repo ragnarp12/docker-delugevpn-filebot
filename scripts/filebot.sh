@@ -3,6 +3,8 @@
 #export LANG=en_US.UTF-8
 #export LANGUAGE=en_US.UTF-8
 #export LC_CTYPE="en_US.UTF-8"
+echo $HOME
+echo $USER
 sleep 20
 TORRENT_NAME="$1"
 TORRENT_LABEL="N/A"
@@ -19,7 +21,7 @@ if [ ! -d "$TORRENT_NEW_PATH" ]; then
     exit 0
 fi
 
-chown $PUID:$PGID -R $TORRENT_NEW_PATH
+#chown $PUID:$PGID -R $TORRENT_NEW_PATH
 THEFILE=""
 
 SUBLANG=en
@@ -37,11 +39,11 @@ filebot -script fn:amc \
     --conflict auto \
     --def exec="THEFILE=\"{f}\"" \
     --def artwork=$ARTWORK \
-    ut_kind=multi "ut_dir=$TORRENT_NEW_PATH" "ut_title=$TORRENT_NAME" \
+    ut_kind=multi "ut_dir=\"$TORRENT_NEW_PATH\"" "ut_title=\"$TORRENT_NAME\"" \
     subtitles=$SUBLANG \
     movieFormat="movies/{n} ({y})/{n} ({y}){' CD'+pi}{'.'+lang}" \
     extractFolder="$HOME/files/_extracted" music=$MUSIC skipExtract=$SKIP_EXTRACT &
 
 if [ ! -z $THEFILE ]; then 
-/scripts/setowner.sh "$THEFILE"
+#/scripts/setowner.sh "$THEFILE"
 fi
